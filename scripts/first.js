@@ -24,6 +24,13 @@ class World {
     constructor(seed, itemMap) {
         this.seed = seed;
         this.items = itemMap;
+        //looping through map
+        for (let [key, value] of itemMap) {
+            if (key === "QRF") {
+                this.items.set("QRF", 0)
+            }
+        }
+
     }
 }
 
@@ -40,7 +47,23 @@ let arrowFunction = () => {
     world.items.forEach((v, k) => {
         console.log(k + ", " + v);
     })
-    return "seed = " + world.seed + ", item size = " + world.items.size;
 
+    //learn sets 
+    const setOfNumbers = new Set(itemMap.values());
+    setOfNumbers.add(itemObj.DGS);
+    if (setOfNumbers.size != 4)
+        throw new Error("Unexpected behaviour expressed by set");
+
+    // array using constructor notation
+    const arrayConstructor = new Array(1, 2, 3);
+    console.log(arrayConstructor);
+
+    // array using literal notation
+    const arrayItems = [];
+    for (let i of setOfNumbers) {
+        arrayItems.push(i)
+    }
+    console.log(arrayItems);
+    return "seed = " + world.seed + ", item size = " + world.items.size;
 }
 console.log(arrowFunction());
