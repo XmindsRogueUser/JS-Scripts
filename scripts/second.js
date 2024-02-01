@@ -3,7 +3,7 @@ var subject = {
     teacher: "Doe",
     id: 1,
     emailOfTeacher: "johndoe@gmail.com",
-    getId: function () {
+    getFullId: function () {
         return this.name + '_' + this.id
     },
     marks: {
@@ -12,7 +12,7 @@ var subject = {
     }
 };
 
-function main() {
+main = () => {
     var student = new Object();
     // Attach properties and methods to student object     
     student.firstName = "Charlie";
