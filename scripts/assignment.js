@@ -34,15 +34,19 @@ const defaultStudent = {
     startDate: "2016-08-05",
     endDate: "2019-03-25",
     garde: "B",
-    get getRollno() {return this.rollno},
-    get getCourse() {return this.course},
-    get getDuration() {return this.duration},
-    get getStartDate() {return this.startDate},
-    get getEndDate() {return this.endDate},
-    get getGarde() {return this.garde}
+    get getRollno() { return this.rollno },
+    get getCourse() { return this.course },
+    get getDuration() { return this.duration },
+    get getStartDate() { return this.startDate },
+    get getEndDate() { return this.endDate },
+    get getGarde() { return this.garde },
+    set setRollno(rollno) { return this.rollno = rollno },
+    set setCourse(course) { return this.course = course },
+    set setDuration(duration) { return this.duration = duration },
+    set setStartDate(startDate) { return this.startDate = startDate },
+    set setEndDate(endDate) { return this.endDate = endDate },
+    set setGarde(garde) { return this.garde = garde }
 };
-
-
 
 setStudentData = (
     rollno,
