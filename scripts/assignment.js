@@ -11,7 +11,6 @@
 // assign value to properties. Create 2 objects and compare the objects to determine if the first one
 // contains equivalent property values as in the second one?
 
-
 const defaultStudent = {
     rollno: 27,
     course: "Computer science",
@@ -19,29 +18,54 @@ const defaultStudent = {
     startDate: "2016-08-05",
     endDate: "2019-03-25",
     garde: "B",
-    get getRollno() { return this.rollno },
-    get getCourse() { return this.course },
-    get getDuration() { return this.duration },
-    get getStartDate() { return this.startDate },
-    get getEndDate() { return this.endDate },
-    get getGarde() { return this.garde },
-    get getStudentData() { return this },
-    set setRollno(rollno) { return this.rollno = rollno },
-    set setCourse(course) { return this.course = course },
-    set setDuration(duration) { return this.duration = duration },
-    set setStartDate(startDate) { return this.startDate = startDate },
-    set setEndDate(endDate) { return this.endDate = endDate },
-    set setGarde(garde) { return this.garde = garde }
+    get Rollno() {
+        return this.rollno;
+    },
+    get Course() {
+        return this.course;
+    },
+    get Duration() {
+        return this.duration;
+    },
+    get StartDate() {
+        return this.startDate;
+    },
+    get EndDate() {
+        return this.endDate;
+    },
+    get Garde() {
+        return this.garde;
+    },
+    toString: function () {
+        return `Roll number: ${this.rollno}, current course: ${this.course}, course duration: ${this.startDate} to ${this.endDate}(${this.duration}), grade obtained: ${this.garde}`;
+    },
+    set Rollno(rollno) {
+        this.rollno = rollno;
+    },
+    set Course(course) {
+        this.course = course;
+    },
+    set Duration(duration) {
+        this.duration = duration;
+    },
+    set StartDate(startDate) {
+        this.startDate = startDate;
+    },
+    set EndDate(endDate) {
+        this.endDate = endDate;
+    },
+    set Garde(garde) {
+        this.garde = garde;
+    },
 };
 
 const defaultNestedObj = {
     name: "John",
-    age: 15
-}
+    age: 15,
+};
 
 function isEqual(object1, object2) {
-
-    // return false if both obj are of same type
+    // return false if both obj are not of same type
     if (typeof object1 != typeof object2) return false;
 
     const objKeys1 = Object.keys(object1);
@@ -51,8 +75,8 @@ function isEqual(object1, object2) {
         return false;
     }
     for (let key of objKeys1) {
-        // compare if value is a nested object
-        if (typeof object1[key] === 'object' && object1[key] !== null) {
+        // compare if value is an object
+        if (typeof object1[key] === "object" && object1[key] !== null) {
             if (!isEqual(object1[key], object2[key])) {
                 return false;
             }
@@ -88,12 +112,12 @@ result = () => {
     // introducing nested object
     student2.nestedObject = defaultNestedObj;
 
-    console.log(defaultStudent.getStudentData);
+    console.log(defaultStudent.toString());
 
     // equals check
     if (isEqual(student1, student2)) {
         return "The Objects are the same";
     }
-    return "objects are not equal";
+    return "objects are not the same";
 };
 console.log(result());
