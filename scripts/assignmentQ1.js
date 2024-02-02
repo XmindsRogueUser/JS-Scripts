@@ -36,7 +36,7 @@ const defaultStudent = {
     get Garde() {
         return this.garde;
     },
-    toString: function () {
+    getStudentDetails: function () {
         return `Roll number: ${this.rollno}, current course: ${this.course}, course duration: ${this.startDate} to ${this.endDate}(${this.duration}), grade obtained: ${this.garde}`;
     },
     set Rollno(rollno) {
@@ -112,7 +112,7 @@ result = () => {
     // introducing nested object
     student2.nestedObject = defaultNestedObj;
 
-    console.log(defaultStudent.toString());
+    console.log(defaultStudent.getStudentDetails());
 
     // equals check
     if (isEqual(student1, student2)) {
