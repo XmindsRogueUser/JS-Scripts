@@ -1,3 +1,5 @@
+// Iterate over the nested object and output the property values
+
 const person = {
     name: "Johny",
     Age: 40,
@@ -40,35 +42,3 @@ function listPropertyValuesRecursive(object = person, baseKey = "root", isArray 
 }
 console.log("\nListing using recursive function")
 listPropertyValuesRecursive();
-
-
-// listing using map and filter
-function listPropertyValuesMapFunction(object = person) {
-    const objKeys = Object.keys(object);
-    for (let key of objKeys) {
-        if (Array.isArray(object[key])) {
-            processedArray = object[key].map(mapArray).filter(filterArray)
-            if (processedArray.length !== 0) {
-                console.log(processedArray);
-            }
-        } else {
-            console.log(key + ": " + object[key]);
-        }
-    }
-}
-
-function mapArray(value, index) {
-    if ((Array.isArray(value) || typeof value === "object") && value !== null) {
-        listPropertyValuesMapFunction(value)
-    } else
-        return "element" + index + " is " + value;
-}
-
-function filterArray(value) {
-    if (value === undefined || value === null) {
-        return false;
-    }
-    return true;
-}
-console.log("\nListing using map and filter")
-listPropertyValuesMapFunction();
