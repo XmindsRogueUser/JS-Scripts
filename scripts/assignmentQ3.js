@@ -4,38 +4,37 @@
 // 'You already read "Two States" by "Chethan Bhagat" , and if not, log a string like 'You still need to read 
 // "Grand Ma's bag of Stories" by "Sudha Murthy."  
 
-var library = [ 
+var library = [
     {
-   title: 'The India Story',
-   author: 'Bimal Jalal',
-   alreadyread : false
-   },
-  {
-   title: "Grand Ma's bag of Stories",
-   author : "Sudgha Murthy",
-   alreadyread : false
-   },
-  {
-   title: "Two States",
-   author : "Chethan Bhagat",
-   alreadyread : true
-  },
- {
-   title: "Lal Salam",
-   author: "Smriti Irani",
-   alreadyread: true
- },
- {
-   title: "Mockingjay: The Final Book of The Hunger Games",
-   author: "Suzanne Collins",
-   alreadyread: false
- }];
+        title: 'The India Story',
+        author: 'Bimal Jalal',
+        alreadyread: false
+    },
+    {
+        title: "Grand Ma's bag of Stories",
+        author: "Sudgha Murthy",
+        alreadyread: false
+    },
+    {
+        title: "Two States",
+        author: "Chethan Bhagat",
+        alreadyread: true
+    },
+    {
+        title: "Lal Salam",
+        author: "Smriti Irani",
+        alreadyread: true
+    },
+    {
+        title: "Mockingjay: The Final Book of The Hunger Games",
+        author: "Suzanne Collins",
+        alreadyread: false
+    }];
 
- function doStuff(value) {
-    if (value.alreadyread)
-        console.log("You already read " + value.title + " by " + value.author)
+library.forEach((book, index, array) => {
+    console.log(index + " " + array)
+    if (book.alreadyread)
+        console.log("You already read " + book.title + " by " + book.author)
     else
-        console.log("You still need to read " + value.title + " by " + value.author)
- }
-
- library.forEach(doStuff);
+        console.log("You still need to read " + book.title + " by " + book.author)
+});
