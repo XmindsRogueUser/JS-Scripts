@@ -2,7 +2,7 @@
 // property values to the second one?
 function isEqual(object1, object2) {
     // return false if both obj are not of same type
-    if (typeof object1 != typeof object2) return false;
+    if (object && typeof object1 != typeof object2) return false;
     const objKeys1 = Object.keys(object1);
     const objKeys2 = Object.keys(object2);
     // return false if key length is different
@@ -20,7 +20,7 @@ function isEqual(object1, object2) {
 
 // Question : Check whether an object is empty.
 objectIsEmpty = (object) => {
-    if (object === undefined || object === null) {
+    if (!object) {
         console.log("The object is either null or undefined");
         return false;
     } else if (Object.keys(object).length === 0) {
