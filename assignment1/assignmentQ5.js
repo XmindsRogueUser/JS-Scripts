@@ -50,24 +50,29 @@ const item = {
     Price: 2700
 }
 
-const rupeeValueInUsDollar = 0.012;
-const rupeeValueInBritishPounds = 0.0096;
-const rupeeValueInAustrailianDoller = 0.019;
-const rupeeValueInMexicanPesos = 0.21;
-
-
 // Question: Define a convert currency function that takes an amount and returns an object that has 
 // U.S. dollars, British pounds, Australian dollars, and Mexican pesos using destructuring display each 
 // currency value individually.
 let convertCurrency = (value) => {
-    return "\t" + value + " Indian Rupees"
-        + "\n\t" + (value * rupeeValueInUsDollar).toFixed(2) + " US Dollar"
-        + "\n\t" + (value * rupeeValueInBritishPounds).toFixed(2) + " British Pounds"
-        + "\n\t" + (value * rupeeValueInAustrailianDoller).toFixed(2) + " Australian Dollars"
-        + "\n\t" + (value * rupeeValueInMexicanPesos).toFixed(2) + " Mexican Pesos"
+    const rupeeValueInUsDollar = 0.012;
+    const rupeeValueInBritishPounds = 0.0096;
+    const rupeeValueInAustrailianDoller = 0.019;
+    const rupeeValueInMexicanPesos = 0.21;
+    return {
+        indianRupee: value,
+        usDoller: (value * rupeeValueInUsDollar).toFixed(2),
+        britishPounds: (value * rupeeValueInBritishPounds).toFixed(2),
+        austrailianDollars: (value * rupeeValueInAustrailianDoller).toFixed(2),
+        mexicanPesos: (value * rupeeValueInMexicanPesos).toFixed(2)
+    }
 }
 
 // Question: Display values of the following object with object destructuring.
-const { name: itemName, Size: { EU: euSize, US: usSize }, Status: itemsStatus, Price } = item;
-console.log(`\n--------*---------\nItem\t${itemName}\nSize\t(EU = ${euSize})(US = ${usSize})
-Status\t${itemsStatus}\nPrice:${convertCurrency(Price)}`)
+let displayItemDetails = () => {
+    const { name: itemName, Size: { EU: euSize, US: usSize }, Status: itemsStatus, Price } = item;
+    const { indianRupee: IR, usDoller: UD, britishPounds: BP, austrailianDollars: AD, mexicanPesos: MP } = convertCurrency(Price);
+    console.log("\n--------*---------\nItem\t" + itemName + "\nSize\t(EU = " + euSize + ")(US = " + usSize
+        + ")\nStatus\t" + itemsStatus + "\nPrice:\t" + IR + " Indian Rupees" + "\n\t" + UD + " US Dollar"
+        + "\n\t" + BP + " British Pounds" + "\n\t" + AD + " Australian Dollars" + "\n\t" + MP + " Mexican Pesos")
+}
+displayItemDetails();
