@@ -71,6 +71,8 @@ async function asyncMain(id) {
         console.log("result with async await function = " + cost);
     } catch (err) {
         console.error("An error occured : " + err);
+    } finally {
+        console.log("Program teminated\n")
     }
 }
 
@@ -87,4 +89,3 @@ console.log("\n Program running..");
 
 // #rejected async
 main(0);
-console.log("Program terminated\n");
