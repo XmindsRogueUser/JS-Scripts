@@ -8,24 +8,24 @@ function heavyTask(message) {
 }
 
 // ------------------------Async Function-------------------------------
-function download(url, callback) {
+function download(url, processId, callback) {
     setTimeout(() => {
         // script to download the picture here
         console.log(`Downloading ${url} ...`);
         // process the picture once it is completed
         callback(url);
-        console.log("Task complete!");
+        console.log(processId + " task complete!\n");
     }, 1000);
-    console.log("A new task is running");
+    console.log("A new task is running : " + processId);
 }
 
 // passing anonymous function
-download("http://www.google.com/lpl.img", (url) => {
+download("http://www.centalmap.gov.in/logo.png", "logoTask", (url) => {
     console.log("Image processed by anonymous function " + url);
 });
 
 // passing a heavy task
-download("http://www.google.com/lpl.img", heavyTask);
+download("http://www.centalmap.gov.in/KeralaDetailedTerrainMap.png", "mapTask", heavyTask);
 
 // ----------------------------Call Backs---------------------------
 function isOdd(number) {
