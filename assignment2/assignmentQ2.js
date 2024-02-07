@@ -7,69 +7,66 @@
 // Otherwise, give the user 0 points
 // The user can play the game as long as they want to
 
+let quit = false;
+let score = 0;
+let attempt = 0;
+
+// Get the input number from user
 getUserInput = () => {
     return new Promise((resolve) => {
         const readline = require("readline").createInterface({
             input: process.stdin,
             output: process.stdout,
         });
-        readline.question("\tEnter number between 0 and 10.\n\t", (number) => {
+        readline.question("\tEnter a number between 0 and 10.\n\t", (number) => {
             resolve(number);
             readline.close();
         });
     });
 };
 
+// Generate random integer between 1 and 10
 let getRandomNumber = () => {
-    return new Promise((resolve) => {
-        resolve(Math.trunc(Math.random() * 10));
-    });
+    return new Promise((resolve) => resolve(Math.trunc(Math.random() * 10)));
 };
 
+// Add the score
 let calculateScore = (random, input, score) => {
     return new Promise((resolve) => {
-        console.log("\tTHE RANDOM NUMBER IS " + random);
-        if (random === input) {
-            console.log("\tyou got two points");
-            score += 2;
-        } else if (--random === input || ++random === input) {
-            console.log("\tyou got one points");
-            ++score;
-        } else {
-            console.log("\tyou got zero points");
-        }
-        resolve(score);
+        let newScore = score;
+        if (random == input) newScore = score + 2;
+        else if (random + 1 == input || random - 1 == input) newScore = score + 1;
+        console.log("\tYou got " + (newScore - score) + " points");
+        resolve(newScore);
     });
 };
 
 async function main() {
-    console.log("\t++<<>++_++--GUSSING-GAME--++_++<>>++\n\t");
-    console.log("\tChoose Q to quit program.");
-    //while loop
-    // let reset = fasle;
-    let quit = false;
-    let score = 0;
-    let attempt = 0;
+    console.log(
+        "\t++<<>++_++--GUESSING-GAME--++_++<>>++\n\n\tChoose Q to quit program anytime."
+    );
     do {
-        console.log("\tCurrent attempt : " + attempt);
+        console.log(
+            "\nCurrent attempt: " + attempt + "\t\t\tcurrent score: " + score
+        );
         let input = await getUserInput();
+        // show final score and quit program
         if (input.toUpperCase() === "Q") {
             quit = true;
-            console.log("\n\tThankyou for playing.\n");
+            console.log("\n\tThankyou for playing.\n\tTOTAL SCORE : " + score);
             continue;
         }
+        // handle invalid input
         if (isNaN(input) || input > 10) {
             console.error("\tPlease enter a valid number between 1 to 10.");
             continue;
         }
-        await getRandomNumber()
-            .then((random) => calculateScore(random, input, score))
-            .then((newScore) =>
-                console.log("\t++<> YOUR SCORE = " + newScore + " <>++\n\t")
-            );
+        let random = await getRandomNumber();
+        console.log("\tTHE GUESSED NUMBER IS " + random);
+        score = await calculateScore(random, input, score);
         ++attempt;
     } while (!quit);
 }
 
+// launch program
 main();
-// getUserInput();
