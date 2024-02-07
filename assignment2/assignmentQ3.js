@@ -13,7 +13,7 @@ main = async () => {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Network response was ' + response.status + "(" + response.statusText + ")");
         }
         data = await response.json();
     } catch (error) {
