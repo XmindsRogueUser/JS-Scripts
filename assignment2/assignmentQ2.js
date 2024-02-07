@@ -57,7 +57,7 @@ async function main() {
             continue;
         }
         // handle invalid input
-        if (isNaN(input) || input > 10) {
+        if (isNaN(input) || input > 10 || input < 0) {
             console.error("\tPlease enter a valid number between 1 to 10.");
             continue;
         }
