@@ -9,7 +9,7 @@ displayAllNameProperty = ({ name, company: { name: compayName } }) => {
 }
 
 main = async () => {
-    let data;
+    let data = [];
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
