@@ -1,0 +1,31 @@
+READ FILE
+ fsPromises.readFile() method is used to read the file. This method read the entire file into the buffer. To load the fs module, we use require() method. It Asynchronously reads the entire contents of a file.
+
+Syntax:
+
+fsPromises.readFile( path, options )
+Parameters: The method accepts two parameters as mentioned above and described below:
+
+path: It holds the name of the file to read or the entire path if stored at another location. It is a string, buffer, URL, or filename.
+options: It holds the encoding of the file. Its default value is ‘utf8’. It is an object or a string.
+encoding: It is a String or NULL. Default: null
+flag: It is a string that supports file system flags. Default: ‘r’.
+Return Value: It returns a Promise.
+
+WRITE FILE
+The fsPromises.writeFile() method is used to asynchronously write the specified data to a file. By default, the file would be replaced if it exists. The ‘options’ parameter can be used to modify the functionality of the method.
+
+The Promise will be resolved with no arguments upon success.
+
+Syntax:
+
+fsPromises.writeFile( file, data, options )
+Parameters: This method accepts three parameters as mentioned above and described below:
+
+file: It is a string, Buffer, URL or file description integer that denotes the path of the file where it has to be written. Using a file descriptor will make it behave similar to fsPromises.write() method.
+data: It is a string, Buffer, TypedArray or DataView that will be written to the file.
+options: It is an string or object that can be used to specify optional parameters that will affect the output. It has three optional parameter:
+encoding: It is a string value that specifies the encoding of the file. The default value is ‘utf8’.
+mode: It is an integer value that specifies the file mode. The default value is 0o666.
+flag: It is a string value that specifies the flag used while writing to the file. The default value is ‘w’.
+Return Value: This method returns a Promise.

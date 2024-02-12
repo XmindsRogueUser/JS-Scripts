@@ -14,13 +14,17 @@ remove = (folderName) => {
         fsPromise
             .lstat(resource)
             .then((stats) => {
-                if (stats.isFile()) {
+                // if (stats.isFile()) {
                     logger.warn(`Removing file ${resource}`);
-                    fsPromise.rm(resource);
-                } else {
-                    logger.warn(`Removing files in subdirectory ${resource}`);
-                    remove(resource);
-                }
+                    fsPromise.rm(resource, { recursive: true, force: true }, err => {
+                        if (err) {
+                          throw err;
+                        }
+                      });
+                // } else {
+                //     logger.warn(`Removing files in subdirectory ${resource}`);
+                //     remove(resource);
+                // }
             })
             .catch((err) => {
                 logger.error(err);
